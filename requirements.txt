@@ -1,0 +1,12 @@
+scapy
+cryptography
+pyshark
+pandas
+numpy
+scikit-learn
+streamlit
+matplotlib
+requests
+boto3>=1.34.0
+botocore[crt]>=1.34.0
+python-dotenv>=1.0.0

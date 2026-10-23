@@ -1,0 +1,29 @@
+.env
+.venv/
+venv/
+decider-env*/
+__pycache__/
+*.py[cod]
+*.pem
+*.pcap
+*.pcapng
+.cache/
+secrets.*
+.DS_Store
+.streamlit/secrets.toml
+evaluation-results*.json
+
+# Docs (keep READMEs, ignore the rest)
+tls-profiler/docs/
+tls-profiler/tasks.md
+*.prompt
+
+# Local TLSProfiler outputs, captures, datasets, and model artifacts
+tls-profiler/output/
+tls-profiler/temp/
+tls-profiler/captures/
+tls-profiler/screenshots/
+tls-profiler/dataset/
+tls-profiler/models/
+tls-profiler/.venv/
+tls-profiler/venv/

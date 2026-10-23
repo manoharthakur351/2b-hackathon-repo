@@ -1,0 +1,18 @@
+nooooooooooooooooo
+you destroyed the existing pipeline!
+
+keep the original structure intact and make sure to preserve the existing functionality.
+
+1. pcap upload
+2. pcap parsing
+3. extraction of relevant data tls
+4. getting required features
+5. getting different flows and relevent features
+6. model training and evaluation
+7. labeling flows
+
+........ imean that is not exactly professional pipeline thats your job to make it professional and efficient.
+
+and new job was to add strand-decider feeatures in to it
+
+ask me for strands decider features and I will provide you with the necessary information to integrate them into the existing pipeline.

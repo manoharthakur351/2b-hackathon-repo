@@ -1,0 +1,86 @@
+[
+  {
+    "name": "TLS handshake anomaly",
+    "expected_tool": "tls_analyzer",
+    "description": "Repeated connection to a known destination with a deprecated TLS version, unusual JA3 fingerprint, and a small set of cipher suites.",
+    "flow": {
+      "Destination IP": "203.0.113.44",
+      "Destination Port": 443,
+      "TLS Version": "TLS 1.0",
+      "JA3_Hash": "demo-ja3-fingerprint",
+      "JA3_Rarity": "high",
+      "Cipher_Suite_Count": 2,
+      "Extension_Count": 4,
+      "SNI": "updates.example.test",
+      "Packet_Count": 9,
+      "Total_Bytes": 9200,
+      "Flow_Duration": 0.8
+    }
+  },
+  {
+    "name": "Unusual hostname",
+    "expected_tool": "dns_analyzer",
+    "description": "A new, long, random-looking hostname appears in SNI. The current evidence does not include a reputation lookup.",
+    "flow": {
+      "Destination IP": "198.51.100.17",
+      "Destination Port": 443,
+      "TLS Version": "TLS 1.3",
+      "SNI": "q7v9m2x8k4p6.example.test",
+      "Domain_Entropy": 4.1,
+      "Destination_Previously_Seen": false,
+      "Packet_Count": 12,
+      "Total_Bytes": 7800
+    }
+  },
+  {
+    "name": "Unknown external destination",
+    "expected_tool": "reputation_checker",
+    "description": "A TLS connection targets an external IP not previously seen in this environment; handshake and flow evidence are otherwise inconclusive.",
+    "flow": {
+      "Destination IP": "203.0.113.88",
+      "Destination Port": 443,
+      "TLS Version": "TLS 1.3",
+      "Destination_Previously_Seen": false,
+      "SNI": "service.example.test",
+      "Packet_Count": 7,
+      "Total_Bytes": 3400
+    }
+  },
+  {
+    "name": "Unexpected outbound transfer",
+    "expected_tool": "flow_analyzer",
+    "description": "A connection sends substantially more data than it receives and repeats several times over an unusually long flow.",
+    "flow": {
+      "Destination IP": "198.51.100.39",
+      "Destination Port": 443,
+      "TLS Version": "TLS 1.3",
+      "Packet_Count": 1380,
+      "Total_Bytes": 98234000,
+      "Bytes_Sent": 94100000,
+      "Bytes_Received": 4134000,
+      "Average_Packet_Size": 71200,
+      "Flow_Duration": 144.5,
+      "IAT_Mean": 0.104,
+      "Repeated_Connections": true
+    }
+  },
+  {
+    "name": "Weak evidence",
+    "expected_tool": "allow_and_monitor",
+    "description": "A short, ordinary TLS 1.3 connection to a familiar hostname has no anomaly indicators and a low ML anomaly probability.",
+    "prediction": {
+      "Malicious_Probability": 0.08,
+      "Prediction": "Normal"
+    },
+    "flow": {
+      "Destination IP": "192.0.2.12",
+      "Destination Port": 443,
+      "TLS Version": "TLS 1.3",
+      "SNI": "www.example.test",
+      "Destination_Previously_Seen": true,
+      "Packet_Count": 8,
+      "Total_Bytes": 2900,
+      "Flow_Duration": 0.31
+    }
+  }
+]
